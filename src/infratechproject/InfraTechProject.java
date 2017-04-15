@@ -21,9 +21,11 @@ public class InfraTechProject extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("MainPage.fxml"));
         
+        
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 

@@ -12,45 +12,45 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="599.0" prefWidth="558.0" style="-fx-background-color: #e6e8ed;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="infratechproject.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="rooter" opacity="0.66" prefHeight="617.0" prefWidth="574.0" style="-fx-background-color: white;" styleClass="infratechproject" stylesheets="@infratect.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infratechproject.FXMLDocumentController">
     <children>
-      <ImageView fitHeight="54.0" fitWidth="93.0" layoutX="224.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="54.0" fitWidth="93.0" layoutX="230.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@myLogo.png" />
          </image>
       </ImageView>
-      <Text layoutX="67.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="81.291015625">
+      <Text layoutX="98.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="81.291015625">
          <font>
             <Font name="Angsana New Bold" size="24.0" />
          </font>
       </Text>
-      <Text layoutX="64.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="75.03076171875">
+      <Text layoutX="96.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="75.03076171875">
          <font>
             <Font name="Angsana New Bold" size="24.0" />
          </font>
       </Text>
-      <Button fx:id="addBtn" layoutX="340.0" layoutY="508.0" mnemonicParsing="false" onAction="#addTransaction" prefHeight="33.0" prefWidth="126.0" style="-fx-background-color: grey; -fx-font-family: verdana; -fx-border-color: blue; -fx-border-image-insets: red; -fx-position-shape: round;" text="Add Transaction" />
-      <Text layoutX="66.0" layoutY="455.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date " wrappingWidth="57.03076171875">
+      <Button fx:id="addBtn" layoutX="240.0" layoutY="556.0" mnemonicParsing="false" onAction="#addTransaction" prefHeight="33.0" prefWidth="75.0" style="-fx-background-color: #e8e8ef; -fx-font-family: verdana; -fx-border-color: white; -fx-padding: 3 6 6 6; -fx-border-radius: 4;" text="Transact" />
+      <Text layoutX="91.0" layoutY="456.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date " wrappingWidth="57.03076171875">
          <font>
             <Font name="Angsana New Bold" size="24.0" />
          </font>
       </Text>
-      <Text layoutX="61.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chairs" wrappingWidth="75.03076171875">
+      <Text layoutX="94.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chairs" wrappingWidth="75.03076171875">
          <font>
             <Font name="Angsana New Bold" size="24.0" />
          </font>
       </Text>
-      <Text layoutX="64.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone" wrappingWidth="75.03076171875">
+      <Text layoutX="95.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone" wrappingWidth="75.03076171875">
          <font>
             <Font name="Angsana New Bold" size="24.0" />
          </font>
       </Text>
-      <Text layoutX="61.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tables" wrappingWidth="75.03076171875">
+      <Text layoutX="90.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tables" wrappingWidth="75.03076171875">
          <font>
             <Font name="Angsana New Bold" size="24.0" />
          </font>
       </Text>
-      <Text layoutX="58.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Canopies" wrappingWidth="75.03076171875">
+      <Text layoutX="87.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Canopies" wrappingWidth="75.03076171875">
          <font>
             <Font name="Angsana New Bold" size="24.0" />
          </font>
@@ -60,6 +60,7 @@
           <Menu mnemonicParsing="false" text="File">
             <items>
               <MenuItem fx:id="close" mnemonicParsing="false" onAction="#closeFile" text="Close" />
+                  <MenuItem fx:id="logOut" mnemonicParsing="false" onAction="#logOutFile" text="LogOut" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Search">
@@ -80,18 +81,18 @@
             </Menu>
         </menus>
       </MenuBar>
-      <DatePicker fx:id="datePicker" layoutX="152.0" layoutY="435.0" prefHeight="25.0" prefWidth="108.0" style="-fx-border-color: #e6e8ed #e6e8ed blue #e6e8ed; -fx-background-color: #e6e8ed #e6e8ed blue #e6e8ed;" />
-      <Text layoutX="283.0" layoutY="456.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration" wrappingWidth="75.03075724840164">
+      <DatePicker fx:id="datePicker" layoutX="185.0" layoutY="435.0" prefHeight="27.0" prefWidth="98.0" style="-fx-border-color: #e6e8ed #e6e8ed blue #e6e8ed; -fx-background-color: #e6e8ed #e6e8ed blue #e6e8ed;" />
+      <Text layoutX="296.0" layoutY="456.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration" wrappingWidth="75.03075724840164">
          <font>
             <Font name="Angsana New Bold" size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="nameTxt" layoutX="155.0" layoutY="130.0" prefHeight="33.0" prefWidth="323.0" style="-fx-border-color: #e6e8ed #e6e8ed blue #e6e8ed; -fx-background-color: #e6e8ed;" />
-      <TextField fx:id="addressTxt" layoutX="155.0" layoutY="179.0" prefHeight="33.0" prefWidth="323.0" style="-fx-border-color: #e6e8ed #e6e8ed blue #e6e8ed; -fx-background-color: #e6e8ed #e6e8ed blue #e6e8ed;" />
-      <TextField fx:id="phoneTxt" layoutX="155.0" layoutY="230.0" prefHeight="33.0" prefWidth="323.0" style="-fx-border-color: #e6e8ed #e6e8ed blue #e6e8ed; -fx-background-color: #e6e8ed #e6e8ed blue #e6e8ed;" />
-      <TextField fx:id="chairTxt" layoutX="155.0" layoutY="281.0" prefHeight="33.0" prefWidth="323.0" style="-fx-border-color: #e6e8ed #e6e8ed blue #e6e8ed; -fx-background-color: #e6e8ed #e6e8ed blue #e6e8ed;" />
-      <TextField fx:id="canopyTxt" layoutX="155.0" layoutY="386.0" prefHeight="33.0" prefWidth="323.0" style="-fx-border-color: #e6e8ed #e6e8ed blue #e6e8ed; -fx-background-color: #e6e8ed #e6e8ed blue #e6e8ed;" />
-      <TextField fx:id="tableTxt" layoutX="157.0" layoutY="332.0" prefHeight="33.0" prefWidth="323.0" style="-fx-border-color: #e6e8ed #e6e8ed blue #e6e8ed; -fx-background-color: #e6e8ed #e6e8ed blue #e6e8ed;" />
-      <TextField fx:id="durationTxt" layoutX="357.0" layoutY="434.0" prefHeight="33.0" prefWidth="117.0" style="-fx-border-color: #e6e8ed #e6e8ed blue #e6e8ed; -fx-background-color: #e6e8ed #e6e8ed blue #e6e8ed;" />
+      <TextField fx:id="nameTxt" layoutX="185.0" layoutY="130.0" prefHeight="33.0" prefWidth="293.0" style="-fx-border-color: #e6e8ed#e6e8ed blue #e6e8ed; -fx-background-color: #e6e8ed;" />
+      <TextField fx:id="addressTxt" layoutX="185.0" layoutY="179.0" prefHeight="33.0" prefWidth="293.0" style="-fx-border-color: #e6e8ed #e6e8ed blue #e6e8ed; -fx-background-color: #e6e8ed #e6e8ed blue #e6e8ed;" />
+      <TextField fx:id="phoneTxt" layoutX="185.0" layoutY="230.0" prefHeight="33.0" prefWidth="293.0" style="-fx-border-color: #e6e8ed #e6e8ed blue #e6e8ed; -fx-background-color: #e6e8ed #e6e8ed blue #e6e8ed;" />
+      <TextField fx:id="chairTxt" layoutX="185.0" layoutY="281.0" prefHeight="33.0" prefWidth="293.0" style="-fx-border-color: #e6e8ed #e6e8ed blue #e6e8ed; -fx-background-color: #e6e8ed #e6e8ed blue #e6e8ed;" />
+      <TextField fx:id="canopyTxt" layoutX="185.0" layoutY="386.0" prefHeight="33.0" prefWidth="293.0" style="-fx-border-color: #e6e8ed #e6e8ed blue #e6e8ed; -fx-background-color: white;" />
+      <TextField fx:id="tableTxt" layoutX="187.0" layoutY="332.0" prefHeight="33.0" prefWidth="293.0" style="-fx-border-color: #e6e8ed #e6e8ed blue #e6e8ed; -fx-background-color: #e6e8ed #e6e8ed blue #e6e8ed;" />
+      <TextField fx:id="durationTxt" layoutX="386.0" layoutY="434.0" prefHeight="33.0" prefWidth="88.0" style="-fx-border-color: #e6e8ed #e6e8ed blue #e6e8ed; -fx-background-color: white;" />
     </children>
 </AnchorPane>

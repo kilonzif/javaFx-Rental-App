@@ -10,18 +10,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="518.0" prefWidth="600.0" style="-fx-background-image: 'myLogo.png';" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="infratechproject.MainPageController">
+<AnchorPane id="AnchorPane" prefHeight="518.0" prefWidth="600.0" style="-fx-background-image: 'myLogo.png';" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infratechproject.MainPageController">
    <children>
       <ImageView fitHeight="519.0" fitWidth="289.0" layoutX="341.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../background.jpg" />
+            <Image url="@background.jpg" />
          </image>
          <viewport>
             <Rectangle2D width="200.0" />
          </viewport>
       </ImageView>
-      <Button fx:id="logInBtn" layoutX="442.0" layoutY="434.0" mnemonicParsing="false" onAction="#logIn" prefHeight="45.0" prefWidth="59.0" text="Go" />
+      <Button fx:id="logInBtn" layoutX="442.0" layoutY="434.0" mnemonicParsing="false" onAction="#logIn" prefHeight="45.0" prefWidth="73.0" style="-fx-background-color: #5e5e6d; -fx-border-color: white; -fx-padding: 3 6 6 6; -fx-border-radius: 4;" text="Go" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="60.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@myLogo.png" />
@@ -37,21 +36,21 @@
             <Font name="Brush Script MT Italic" size="18.0" />
          </font>
       </Text>
-      <PasswordField fx:id="pinTxt" layoutX="376.0" layoutY="240.0" prefHeight="93.0" prefWidth="191.0" promptText="Enter Pin" style="-fx-border-color: blue;" />
-      <Label fx:id="dateLabel" alignment="CENTER" layoutX="379.0" layoutY="95.0" prefHeight="116.0" prefWidth="191.0" style="-fx-border-color: WHITE;" />
+      <PasswordField fx:id="pinTxt" layoutX="376.0" layoutY="240.0" prefHeight="93.0" prefWidth="191.0" promptText="Enter Pin" style="-fx-border-color: #5e5e6d;" />
+      <Label fx:id="dateLabel" alignment="CENTER" layoutX="379.0" layoutY="105.0" prefHeight="106.0" prefWidth="191.0" style="-fx-border-color: WHITE;" />
       <ImageView fitHeight="215.0" fitWidth="368.0" layoutX="6.0" layoutY="304.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.5px;">
          <image>
-            <Image url="@../rentals.jpg" />
+            <Image url="@rentals.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="285.0" fitWidth="325.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.1px;">
          <image>
-            <Image url="@../rentals.jpg" />
+            <Image url="@rentals.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="227.0" fitWidth="360.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.1px;">
          <image>
-            <Image url="@../rentals.jpg" />
+            <Image url="@rentals.jpg" />
          </image>
       </ImageView>
    </children>
