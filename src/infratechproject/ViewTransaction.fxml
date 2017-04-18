@@ -9,19 +9,19 @@
 
 <AnchorPane id="AnchorPane" fx:id="transactRoot" opacity="0.72" prefHeight="467.0" prefWidth="613.0" style="-fx-background-color: #E6E6FA;" styleClass="infratechproject" stylesheets="@viewTransCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infratechproject.ViewTransactionController">
    <children>
-      <TableView fx:id="transact_Table" layoutX="39.0" layoutY="103.0" prefHeight="290.0" prefWidth="536.0" style="-fx-border-color: blue; -fx-background-color: transparent;" styleClass="ViewTransactionController">
+      <TableView fx:id="transact_Table" editable="true" layoutX="39.0" layoutY="103.0" prefHeight="290.0" prefWidth="536.0" style="-fx-border-color: blue; -fx-background-color: transparent;" styleClass="ViewTransactionController">
         <columns>
-          <TableColumn prefWidth="75.0" text="Customer" />
-          <TableColumn prefWidth="75.0" text="Address" />
-            <TableColumn prefWidth="75.0" text="Phone#" />
-            <TableColumn prefWidth="75.0" text="Chairs" />
-            <TableColumn prefWidth="75.0" text="Canopies" />
-            <TableColumn prefWidth="75.0" text="Tables" />
-            <TableColumn prefWidth="75.0" text="Date" />
+          <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Customer" />
+          <TableColumn fx:id="addressColumn" prefWidth="75.0" text="Address" />
+            <TableColumn fx:id="phoneColumn" prefWidth="75.0" text="Phone#" />
+            <TableColumn fx:id="chairColumn" prefWidth="75.0" text="Chairs" />
+            <TableColumn fx:id="canopyColumn" prefWidth="75.0" text="Canopies" />
+            <TableColumn fx:id="tableColumn" prefWidth="75.0" text="Tables" />
+            <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Date" />
         </columns>
       </TableView>
-      <Button id="deleteButton" fx:id="deleteButton" layoutX="379.0" layoutY="419.0" mnemonicParsing="false" style="-fx-border-color: blue; -fx-background-color: #5e5e6d;" stylesheets="@viewTransCSS.css" text="Delete" />
-      <Button id="editButton" fx:id="editButton" layoutX="262.0" layoutY="418.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="87.0" style="-fx-border-color: blue; -fx-background-color: #5e5e6d;" stylesheets="@viewTransCSS.css" text="Edit" />
+      <Button id="deleteButton" fx:id="deleteButton" layoutX="379.0" layoutY="419.0" mnemonicParsing="false" onAction="#deleteRecord" style="-fx-border-color: blue; -fx-background-color: #5e5e6d;" stylesheets="@viewTransCSS.css" text="Delete" />
+      <Button id="editButton" fx:id="editButton" layoutX="260.0" layoutY="416.0" mnemonicParsing="false" onAction="#editButton" prefHeight="37.0" prefWidth="104.0" style="-fx-border-color: blue; -fx-background-color: #5e5e6d;" stylesheets="@viewTransCSS.css" text="Edit" />
       <Button id="backButton" fx:id="backButton" layoutX="495.0" layoutY="419.0" mnemonicParsing="false" onAction="#goBack" style="-fx-border-color: blue; -fx-background-color: #5e5e6d;" stylesheets="@viewTransCSS.css" text="Cancel" />
       <ImageView fitHeight="72.0" fitWidth="110.0" layoutX="208.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 10px;">
          <image>

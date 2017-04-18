@@ -5,6 +5,7 @@
  */
 package infratechproject;
 
+import Model.DatabaseConnection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +16,7 @@ import javafx.stage.Stage;
  *
  * @author study
  */
+@SuppressWarnings("unchecked")
 public class InfraTechProject extends Application {
     
     @Override

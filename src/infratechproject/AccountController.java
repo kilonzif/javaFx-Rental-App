@@ -5,6 +5,7 @@
  */
 package infratechproject;
 
+import Model.addModel;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
@@ -21,7 +22,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import infratechproject.DatabaseConnection;//conn;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -33,6 +33,7 @@ import java.util.logging.Logger;
  *
  * @author study
  */
+@SuppressWarnings("unchecked")
 public class AccountController implements Initializable {
 
     @FXML
@@ -103,18 +104,9 @@ public class AccountController implements Initializable {
         Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3300/IcpFaith?user=root&password=faith1");
         String username=userNameTxt.getText();
         String passwad=passwordTxt.getText();
-        String C_passwad=confirmPassword.getText();        
-           try {
-            PreparedStatement p = conn.prepareStatement(
-                    "Insert Into accountUsers set username=?,passwd =  ? ,C_passwd =  ?");
-            p.setString(1, username);
-            p.setString(2, passwad);
-            p.setString(3, C_passwad);          
-            p.execute(); 
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
-            return;
-        }
+        String C_passwad=confirmPassword.getText(); 
+             addModel mod = new addModel();
+       mod.addAccount(username,passwad,C_passwad);
     
     
     

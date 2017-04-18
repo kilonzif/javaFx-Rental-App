@@ -23,6 +23,7 @@ import javafx.stage.Stage;
  *
  * @author study
  */
+@SuppressWarnings("unchecked")
 public class SearchPageController implements Initializable {
 
     @FXML

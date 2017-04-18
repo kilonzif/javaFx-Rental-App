@@ -5,10 +5,11 @@
  */
 package infratechproject;
 
+import Model.addModel;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -28,10 +29,12 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+
 /**
  *
  * @author study
  */
+@SuppressWarnings("unchecked")
 public class FXMLDocumentController implements Initializable {
     
     private Label label;
@@ -81,35 +84,45 @@ public class FXMLDocumentController implements Initializable {
     }    
 
     @FXML
-    private void addTransaction(ActionEvent event) throws IOException {
-        String name=nameTxt.getText();
-        String add=addressTxt.getText();
-        String phone=phoneTxt.getText();
-        String chair=chairTxt.getText();
-        String table=tableTxt.getText();
-        String canopy=canopyTxt.getText();
-        LocalDate dater=datePicker.getValue();
-            
+    private void addTransaction(ActionEvent event) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+           String name=nameTxt.getText();
+           String add=addressTxt.getText();
+           String phone=phoneTxt.getText();
+           String chair=chairTxt.getText();
+           String table=tableTxt.getText();
+           String canopy=canopyTxt.getText();
+           LocalDate dater=datePicker.getValue();
+           String date=dater.toString();
+            if (name.equals("") || add.equals("") || phone.equals("") || chair.equals("") || table.equals("") || canopy.equals("")||date.equals("")) {
+            //status.setText("Please fill all fields");
+            System.out.println("all fields");
         
-        
-        
-        
-        
-        
-        
-        
-         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Payment Totals");
-            alert.setHeaderText("Payment Totals");
-            alert.setContentText("...");
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK) {
+        } else if (!(add.contains(".") || add.contains("@"))) 
+            //status.setText("Incorrect email");
+             System.out.println("Incorrect Mail");
+         else if(phone.length() < 10||phone.length()>10) 
+            //status.setText("Password should be at least 6 characters");
+                System.out.println("phone number shld be 10 xters");
+        else {
+             double cost = calculateCost();
+             addModel mod = new addModel();
+             mod.addCustomer(name, add, phone, chair, table, canopy, date);
+
+           Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+           alert.setTitle("Payment Totals");
+           alert.setHeaderText("Payment Totals");
+           alert.setContentText(cost + "USD");
+           Optional<ButtonType> result = alert.showAndWait();
+           if (result.get() == ButtonType.OK) {
                Alert a=new Alert(Alert.AlertType.INFORMATION) ;
                a.setContentText("aDDED SUCCESSFULLY!!!");
-                
-            }
-      
+               
+           }
+           
+
+       }
     }
+
 
     @FXML
     private void closeFile(ActionEvent event) {
@@ -219,6 +232,19 @@ public class FXMLDocumentController implements Initializable {
                 }
             }
      }
+    public double calculateCost(){
+        double chairCost=(Integer.parseInt(chairTxt.getText()))*20;
+        double tableCost=(Integer.parseInt(tableTxt.getText()))*15;
+        double canopyCost=(Integer.parseInt(canopyTxt.getText()))*30;
+        int days = Integer.parseInt(durationTxt.getText());
+        double cost = 0;
+        if (days<10)
+            cost=100+chairCost+tableCost+canopyCost;
+        else if(days>10 && days>20)
+            cost=500+chairCost+tableCost+canopyCost;
+        return cost;
+        
+    }
               
         
    

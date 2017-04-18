@@ -25,6 +25,7 @@ import javafx.stage.Stage;
  *
  * @author study
  */
+@SuppressWarnings("unchecked")
 public class AboutInfratechController implements Initializable {
 
     @FXML

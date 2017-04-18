@@ -24,6 +24,7 @@ import javafx.stage.Stage;
  *
  * @author study
  */
+@SuppressWarnings("unchecked")
 public class ViewStockController implements Initializable {
 
     @FXML

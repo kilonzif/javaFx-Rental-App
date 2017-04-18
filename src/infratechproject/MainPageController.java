@@ -31,6 +31,7 @@ import javafx.stage.Stage;
  *
  * @author study
  */
+@SuppressWarnings("unchecked")
 public class MainPageController implements Initializable {
 
     @FXML
@@ -51,7 +52,7 @@ public class MainPageController implements Initializable {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
        Date date = new Date();
        System.out.println(dateFormat.format(date));
-       //logInBtn.setText(dateFormat.format(date));
+      
        
         
         
