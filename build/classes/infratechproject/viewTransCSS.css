@@ -1,0 +1,52 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 13, 2017, 9:23:47 PM
+    Author     : study
+*/
+.infratechproject{
+   /** -fx-background-image: url("images.jpg");*/
+    -fx-background-size: 100% 95%;
+    -fx-background-position: center;
+    -fx-background-color: grey;
+    /**-fx-opacity: 0.5;*/
+     -fx-border-color: transparent;
+}
+#editButton{
+        -fx-font: bold italic 16pt "Arial";
+        -fx-background-color: #5e5e6b;
+        -fx-border-radius: 4;
+        -fx-box-color: steelblue;
+        -fx-padding: 3 6 6 6;
+}
+#backButton{
+        -fx-background-color: #5e5e6b;
+        -fx-font: bold italic 16pt "Arial";
+        -fx-border-radius: 4;
+        -fx-box-shadow: red;
+        -fx-padding: 3 6 6 6;
+}
+#deleteButton{
+        -fx-background-color: #5e5e6b;
+        -fx-font: bold italic 16pt "Arial";
+        -fx-border-radius: 4;
+        -fx-box-shadow: steelblue;
+        -fx-padding: 3 6 6 6;
+}
+#helpPage{
+     /**-fx-background-image: url("rentals.jpg");*/
+    -fx-background-size: 98% 95%;
+    -fx-background-position: center;
+    -fx-background-color: grey;
+    /**-fx-opacity: 0.1;*/
+     -fx-border-color: transparent;
+}
+#aboutTxtField{
+    -fx-text-fill: black;
+    -fx-background-color: #5e5e6d;
+    -fx-box-shadow-color:#5e5e6d;
+    
+}

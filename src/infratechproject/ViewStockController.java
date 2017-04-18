@@ -15,6 +15,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 /**
@@ -27,7 +29,9 @@ public class ViewStockController implements Initializable {
     @FXML
     private Button backButton;
     @FXML
-    private Button addButton;
+    private ComboBox<?> itemBox;
+    @FXML
+    private ListView<?> ItemList;
 
     /**
      * Initializes the controller class.
@@ -56,7 +60,7 @@ public class ViewStockController implements Initializable {
     }
 
     @FXML
-    private void addStock(ActionEvent event) {
+    private void viewSelectedItem(ActionEvent event) {
     }
     
 }

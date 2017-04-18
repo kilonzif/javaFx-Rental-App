@@ -7,6 +7,8 @@ package infratechproject;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -25,7 +27,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
  *
@@ -81,6 +82,22 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void addTransaction(ActionEvent event) throws IOException {
+        String name=nameTxt.getText();
+        String add=addressTxt.getText();
+        String phone=phoneTxt.getText();
+        String chair=chairTxt.getText();
+        String table=tableTxt.getText();
+        String canopy=canopyTxt.getText();
+        LocalDate dater=datePicker.getValue();
+            
+        
+        
+        
+        
+        
+        
+        
+        
          Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Payment Totals");
             alert.setHeaderText("Payment Totals");

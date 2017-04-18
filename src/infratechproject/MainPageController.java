@@ -7,10 +7,13 @@ package infratechproject;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.*;//Connection;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,13 +21,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javax.swing.UIManager;
-
 /**
  * FXML Controller class
  *
@@ -35,9 +36,11 @@ public class MainPageController implements Initializable {
     @FXML
     private Button logInBtn;
     @FXML
-    private PasswordField pinTxt;
+    private Hyperlink signUpLink;
     @FXML
-    private Label dateLabel;
+    private PasswordField passTxt;
+    @FXML
+    private TextField userTxt;
 
     /**
      * Initializes the controller class.
@@ -48,15 +51,61 @@ public class MainPageController implements Initializable {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
        Date date = new Date();
        System.out.println(dateFormat.format(date));
-       dateLabel.setText(dateFormat.format(date));
+       //logInBtn.setText(dateFormat.format(date));
        
         
         
     }    
 
     @FXML
-    private void logIn(ActionEvent event) throws IOException {
-         Stage prev = (Stage) dateLabel.getScene().getWindow();
+    private void logIn(ActionEvent event) throws IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+        
+        
+        try {
+            validateLogIn();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainPageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+         
+    }
+
+    @FXML
+    private void createAccount(ActionEvent event) {
+         Stage prev = (Stage) logInBtn.getScene().getWindow();
+                prev.close();
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Account.fxml"));
+                    Parent root1 = (Parent) fxmlLoader.load();
+                    Stage stage = new Stage();
+                    stage.setTitle("Infratech Rentals " );
+                    stage.getIcons().add(new Image("file:myLogo.png"));
+                    stage.setScene(new Scene(root1));
+                    stage.setResizable(false);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+    }
+    public void validateLogIn() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
+        try {
+            String sql = "SELECT username, passwd from accountUsers WHERE username = ? AND passwd = ?";
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            Connection conn;
+            conn = java.sql.DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3300/IcpFaith?user=root&password=faith1");
+           PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, userTxt.getText());
+            ps.setString(2, userTxt.getText());
+            ResultSet rs = ps.executeQuery("SELECT * FROM accountUsers");
+            
+            while (rs.next()) {
+               
+                    if ((userTxt.getText().equalsIgnoreCase(rs.getString("username")))
+                            && (passTxt.getText().equalsIgnoreCase(rs.getString("passwd")))) {
+                        Stage prev = (Stage) logInBtn.getScene().getWindow();
                 prev.close();
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
@@ -70,6 +119,17 @@ public class MainPageController implements Initializable {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                        
+                        
+                    }
+                    else{
+                        System.out.println("Check Input!");
+                    }
+                    
+                
+        }} catch (IllegalAccessException ex) {
+            Logger.getLogger(MainPageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
-    
 }
