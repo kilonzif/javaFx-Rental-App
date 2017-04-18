@@ -6,10 +6,13 @@
 package infratechproject;
 
 import Model.DatabaseConnection;
+import Model.Operations;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,10 +24,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -138,11 +144,46 @@ public class ViewTransactionController implements Initializable {
     }
 
     @FXML
-    private void deleteRecord(ActionEvent event) {
+    private void deleteRecord(ActionEvent event) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+         int selectedIndex = transact_Table.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation Dialog");
+            alert.setHeaderText("Look, a Confirmation Dialog");
+            alert.setContentText("Are you ok with this?");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                Operations delOp=new Operations();
+                delOp.deleteRecord(selectedIndex);
+                transact_Table.getItems().remove(selectedIndex);
+            } 
+
+        }
+        
     }
 
     @FXML
-    private void editButton(ActionEvent event) {
+    private void editButton(ActionEvent event) throws SQLException, ClassNotFoundException {
+        try {
+            transact_Table.setEditable(true);
+            transact_Table.setEditable(true);
+            nameColumn.setCellFactory(TextFieldTableCell.<Record>forTableColumn());
+            nameColumn.setOnEditCommit(
+                    (TableColumn.CellEditEvent<Record, String> t) -> {
+                        ((Record) t.getTableView().getItems().get(
+                                t.getTablePosition().getRow())).setName(t.getNewValue());
+                    });
+            String name=nameColumn.getText();
+            int selectedIndex = transact_Table.getSelectionModel().getSelectedIndex();
+            Operations operationsObject=new Operations();
+            operationsObject.updateRecord(selectedIndex, name);//updateRecord(selectedIndex,nameColumn);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(ViewTransactionController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(ViewTransactionController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+    
 
 }
