@@ -63,11 +63,6 @@
                   <MenuItem fx:id="logOut" mnemonicParsing="false" onAction="#logOutFile" text="LogOut" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Search">
-            <items>
-              <MenuItem fx:id="searchNav" mnemonicParsing="false" onAction="#navigateSearch" text="Search Customer" />
-            </items>
-          </Menu>
             <Menu mnemonicParsing="false" text="View">
                <items>
                   <MenuItem fx:id="navigateTransaction" mnemonicParsing="false" onAction="#viewTransaction" text="Recent Transactions" />

@@ -11,20 +11,29 @@ import java.sql.SQLException;
 
 /**
  *
- * @author study
+ * @author Faith Kilonzi.
  */
 @SuppressWarnings("unchecked")
 public class DatabaseConnection {
-    public Connection Connector() throws ClassNotFoundException, InstantiationException, IllegalAccessException{
-        try{
-        Class.forName("com.mysql.jdbc.Driver");
-        return DriverManager.getConnection("jdbc:mysql://localhost:3300/IcpFaith", "root","faith1");
-        //System.out.println("Connected");
-        }catch(SQLException e){
-       
-        System.out.println(e.getCause()+" "+e.getMessage());
-    
-        } 
+
+    /**
+     * Creates a connection with the database.
+     *
+     * @return a database connection.
+     * @throws ClassNotFoundException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     */
+    public Connection Connector() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            return DriverManager.getConnection("jdbc:mysql://localhost:3300/IcpFaith", "root", "faith1");
+            //System.out.println("Connected");
+        } catch (SQLException e) {
+
+            System.out.println(e.getCause() + " " + e.getMessage());
+
+        }
         return null;
     }
 }

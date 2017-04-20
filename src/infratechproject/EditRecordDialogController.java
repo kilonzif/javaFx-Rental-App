@@ -5,7 +5,9 @@
  */
 package infratechproject;
 
+import Model.Operations;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -53,7 +55,6 @@ public class EditRecordDialogController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        // setRecordDetails();
     }
 
     /**
@@ -66,13 +67,13 @@ public class EditRecordDialogController implements Initializable {
     }
 
     /**
-     * Sets the person to be edited in the dialog.
+     * Sets the record to be edited in the dialog.
      *
      * @param record is the instance of the record object selected in the
-     * previous method
+     *
      */
     public void setRecordDetails(Record record) {
-        this.record = record;//vw.returnModel();
+        this.record = record;
         editName.setText(record.getName());
         editEmail.setText(record.getAddress());
         editPhone.setText(record.getPhone());
@@ -90,36 +91,28 @@ public class EditRecordDialogController implements Initializable {
     public boolean isOkClicked() {
         return true;
     }
-    
 
     /**
-     * Called when the user clicks ok after editing.
+     * Called when the user clicks OK after editing. Calls the update method
+     * from the database to update the edited Record Calls the build data method
+     * to refresh the table after editing
      *
-     * @param event called onlick ok..
+     * @param event confirms the click on the OK button..
      */
     @FXML
-    private void okClicked(ActionEvent event) {
+    private void okClicked(ActionEvent event) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         okClicked = true;
         Record record = new Record();
         String datey = dateP.getValue().toString();
         if (isInputValid()) {
-            record.setName(editName.getText());
-            record.setAddress(editEmail.getText());
-            record.setPhone(editPhone.getText());
-            record.setChairs(editChair.getText());
-            record.setTables(EditTable.getText());
-            record.setCanopies(editCanopy.getText());
-            record.setDateEntry(datey);
+
             Stage prev = (Stage) editDialog.getScene().getWindow();
-            //System.out.println(record.getName());
+            Operations update = new Operations();
+            update.updateRecord(ViewTransactionController.selectedItem.getName(), editName.getText(), editEmail.getText(), editPhone.getText(), editChair.getText(), EditTable.getText(), editCanopy.getText(), datey);
+
             prev.hide();
 
         }
-    }
-    
-    public boolean getIsOkay(ActionEvent event){
-        return event.getSource().equals(okButton);
-    
     }
 
     /**
@@ -127,10 +120,10 @@ public class EditRecordDialogController implements Initializable {
      *
      * @return true if the input is valid
      */
-    private boolean isInputValid() {
+    public boolean isInputValid() {
         String errorMessage = "";
-        if (editName.getText().equals("") || editEmail.getText().equals("")
-                || editPhone.getText().equals("") || editChair.getText().equals("") || EditTable.getText().equals("") || editCanopy.getText().equals("") || dateP.getValue().equals("")) {
+        if (editPhone.getText().equals("")
+                || editName.getText().equals("") || editEmail.getText().equals("") || editChair.getText().equals("") || EditTable.getText().equals("") || editCanopy.getText().equals("") || dateP.getValue().equals("")) {
             errorMessage += "Please fill all fields!\n";
 
         } else if (!(editEmail.getText().contains(".") || editEmail.getText().contains("@"))) {
@@ -141,7 +134,6 @@ public class EditRecordDialogController implements Initializable {
         if (errorMessage.length() == 0) {
             return true;
         } else {
-            // Show the error message
             String alertMsg = errorMessage + " ";
             showAlert(alertMsg);
 
@@ -150,6 +142,11 @@ public class EditRecordDialogController implements Initializable {
 
     }
 
+    /**
+     * Alerts the user on the input mismatch
+     *
+     * @param alertMsg contains the message alert to be displayed
+     */
     public void showAlert(String alertMsg) {
         Alert alert;
         alert = new Alert(AlertType.ERROR);

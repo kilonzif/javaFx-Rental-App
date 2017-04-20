@@ -5,12 +5,10 @@
         <group>
             <file>file:/C:/Users/study/Documents/NetBeansProjects/InfraTechProject/src/infratechproject/ViewTransactionController.java</file>
             <file>file:/C:/Users/study/Documents/NetBeansProjects/InfraTechProject/src/infratechproject/FXMLDocumentController.java</file>
-            <file>file:/C:/Users/study/Documents/NetBeansProjects/InfraTechProject/src/Model/DatabaseConnection.java</file>
-            <file>file:/C:/Users/study/Documents/NetBeansProjects/InfraTechProject/src/infratechproject/ViewStockController.java</file>
             <file>file:/C:/Users/study/Documents/NetBeansProjects/InfraTechProject/src/Model/Operations.java</file>
             <file>file:/C:/Users/study/Documents/NetBeansProjects/InfraTechProject/src/infratechproject/Record.java</file>
             <file>file:/C:/Users/study/Documents/NetBeansProjects/InfraTechProject/src/Model/addModel.java</file>
-            <file>file:/C:/Users/study/Documents/NetBeansProjects/InfraTechProject/src/infratechproject/InfraTechProject.java</file>
+            <file>file:/C:/Users/study/Documents/NetBeansProjects/InfraTechProject/src/infratechproject/EditRecordDialogController.java</file>
         </group>
     </open-files>
 </project-private>

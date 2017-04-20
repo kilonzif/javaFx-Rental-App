@@ -13,23 +13,48 @@ import java.sql.*;
  */
 @SuppressWarnings("unchecked")
 public class Operations {
-        Connection conn = null;
-    ResultSet rs= null;
-    PreparedStatement statement = null;
 
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement statement = null;
+/**
+ * 
+ * @param index is the id of the selected item to delete.
+ * @return true if Record deletion is successful.
+ * @throws SQLException
+ * @throws ClassNotFoundException
+ * @throws InstantiationException
+ * @throws IllegalAccessException 
+ */
+    
     public boolean deleteRecord(int index) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         String query = "DELETE FROM customerDetails WHERE id=?";
-        conn=createConnection();
+        conn = createConnection();
         statement = conn.prepareStatement(query);
         statement.setInt(1, index);
         return statement.execute();
     }
-     public void updateRecord (int index,String name, String add, String phone, String chair, String table, String canopy, String date) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
-        System.out.println("hghj   :" +index);
-        String updateStmt ="UPDATE customerDetails SET customerName=?,address=?,phone=?,chairs=?,tableQty=?,canopy=?,rentDate=? WHERE id = ?";
-        conn=createConnection();
+
+    /**
+     * updates the edited data to the database
+     *
+     * @param oldname the initial name before editing.
+     * @param name the new detail.
+     * @param add the email address after editing.
+     * @param phone the phone number after editing.
+     * @param chair the number of chair after editing.
+     * @param table the number of tables after editing.
+     * @param canopy the number of canopy after editing.
+     * @param date the date.
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     */
+    public void updateRecord(String oldname, String name, String add, String phone, String chair, String table, String canopy, String date) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+        String updateStmt = "UPDATE customerDetails SET customerName=?,address=?,phone=?,chairs=?,tableQty=?,canopy=?,rentDate=? WHERE customerName = '" + oldname + "'";
+        conn = createConnection();
         statement = conn.prepareStatement(updateStmt);
-        //statement.setString(1, "0");
         statement.setString(1, name);
         statement.setString(2, add);
         statement.setString(3, phone);
@@ -37,22 +62,24 @@ public class Operations {
         statement.setString(5, table);
         statement.setString(6, canopy);
         statement.setString(7, date);
-        statement.setInt(8, index);
-        
-        
+        statement.execute();
+        statement.close();
+        conn.close();
 
-         statement.execute();
-     
     }
-    
-    
-    
-    
-    
-     public Connection createConnection() throws ClassNotFoundException, InstantiationException, IllegalAccessException{
+
+    /**
+     * creates an instance of the database connection.
+     *
+     * @return Connection between the database Connection class.
+     * @throws ClassNotFoundException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     */
+    public Connection createConnection() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
         DatabaseConnection connecta = new DatabaseConnection();
         return connecta.Connector();
 
     }
-    
+
 }

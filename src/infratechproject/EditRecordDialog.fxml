@@ -6,11 +6,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="editDialog" prefHeight="364.0" prefWidth="459.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infratechproject.EditRecordDialogController">
+<AnchorPane id="AnchorPane" fx:id="editDialog" prefHeight="364.0" prefWidth="459.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infratechproject.EditRecordDialogController">
    <children>
-      <ImageView fitHeight="61.0" fitWidth="81.0" layoutX="220.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="49.0" fitWidth="49.0" layoutX="194.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@myLogo.png" />
          </image>
@@ -30,5 +31,10 @@
       <Text layoutX="77.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
       <DatePicker fx:id="dateP" editable="false" layoutX="128.0" layoutY="315.0" prefHeight="25.0" prefWidth="231.0" style="-fx-border-color: white white black white;" />
       <Button fx:id="okButton" layoutX="375.0" layoutY="315.0" mnemonicParsing="false" onAction="#okClicked" prefHeight="25.0" prefWidth="66.0" style="-fx-border-color: black;" text="OK" />
+      <Text layoutX="179.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="InfraTech Rentals">
+         <font>
+            <Font name="Californian FB" size="14.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

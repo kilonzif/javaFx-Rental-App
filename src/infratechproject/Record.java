@@ -22,6 +22,10 @@ public class Record {
     public StringProperty phone = new SimpleStringProperty();
     public StringProperty canopies = new SimpleStringProperty();
 
+    /**
+     * Getter and setter methods for the member attributes of the record.
+     * @return
+     */
     public String getName() {
         return name.get();
     }
