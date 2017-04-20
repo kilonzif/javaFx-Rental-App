@@ -30,7 +30,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -73,7 +72,8 @@ public class ViewTransactionController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        try {
+        buildData();
+       /* try {
             nameColumn.setCellValueFactory(
                     new PropertyValueFactory<>("name"));
             addressColumn.setCellValueFactory(
@@ -98,18 +98,36 @@ public class ViewTransactionController implements Initializable {
         } catch (IllegalAccessException ex) {
             Logger.getLogger(ViewTransactionController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        */
     }
     private ObservableList<Record> data;
 
     public void buildData() {
-        data = FXCollections.observableArrayList();
+         try {
+            nameColumn.setCellValueFactory(
+                    new PropertyValueFactory<>("name"));
+            addressColumn.setCellValueFactory(
+                    new PropertyValueFactory<>("address"));
+            phoneColumn.setCellValueFactory(
+                    new PropertyValueFactory<>("phone"));
+            chairColumn.setCellValueFactory(
+                    new PropertyValueFactory<>("chairs"));
+            canopyColumn.setCellValueFactory(
+                    new PropertyValueFactory<>("canopies"));
+            tableColumn.setCellValueFactory(
+                    new PropertyValueFactory<>("tables"));
+            dateColumn.setCellValueFactory(
+                    new PropertyValueFactory<>("dateEntry"));
+            DatabaseConnection objDbClass = new DatabaseConnection();
+            con = objDbClass.Connector();
+           // buildData();
+            data = FXCollections.observableArrayList();
         try {
             String SQL = "Select * from customerDetails Order By id";
             ResultSet rs = con.createStatement().executeQuery(SQL);
-                    //createStatement().executeQuery(SQL);
             while (rs.next()) {
                 Record record = new Record();
-                record.name.set(rs.getNString("customerName"));//set(rs.getString(name));
+                record.name.set(rs.getNString("customerName"));
                 record.address.set(rs.getString("address"));
                 record.phone.set(rs.getString("phone"));
                 record.chairs.set(rs.getString("chairs"));
@@ -123,6 +141,14 @@ public class ViewTransactionController implements Initializable {
             e.printStackTrace();
             System.out.println("Error on Building Data");
         }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ViewTransactionController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(ViewTransactionController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(ViewTransactionController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
     }
 
     @FXML
@@ -145,7 +171,7 @@ public class ViewTransactionController implements Initializable {
 
     @FXML
     private void deleteRecord(ActionEvent event) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
-         int selectedIndex = transact_Table.getSelectionModel().getSelectedIndex();
+        int selectedIndex = transact_Table.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmation Dialog");
@@ -154,36 +180,97 @@ public class ViewTransactionController implements Initializable {
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
-                Operations delOp=new Operations();
+                Operations delOp = new Operations();
                 delOp.deleteRecord(selectedIndex);
                 transact_Table.getItems().remove(selectedIndex);
-            } 
+            }
 
         }
-        
+
+    }
+
+    public Record returnModel() {
+        return transact_Table.getSelectionModel().getSelectedItem();
     }
 
     @FXML
     private void editButton(ActionEvent event) throws SQLException, ClassNotFoundException {
-        try {
-            transact_Table.setEditable(true);
-            transact_Table.setEditable(true);
-            nameColumn.setCellFactory(TextFieldTableCell.<Record>forTableColumn());
-            nameColumn.setOnEditCommit(
-                    (TableColumn.CellEditEvent<Record, String> t) -> {
-                        ((Record) t.getTableView().getItems().get(
-                                t.getTablePosition().getRow())).setName(t.getNewValue());
-                    });
-            String name=nameColumn.getText();
-            int selectedIndex = transact_Table.getSelectionModel().getSelectedIndex();
-            Operations operationsObject=new Operations();
-            operationsObject.updateRecord(selectedIndex, name);//updateRecord(selectedIndex,nameColumn);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(ViewTransactionController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(ViewTransactionController.class.getName()).log(Level.SEVERE, null, ex);
+        Record selectedItem= transact_Table.getSelectionModel().getSelectedItem();
+        int id = transact_Table.getSelectionModel().getSelectedIndex();
+        
+        if (selectedItem != null) {
+             EditRecordDialogController controller = new EditRecordDialogController();//.getController();
+            //controller.callOk();
+            //if(controller.getIsOkay(event))
+            showRecordEditDialog(selectedItem);
+            if(controller.isOkClicked()){
+                System.out.println(controller.editName.getText());
+                Operations update= new Operations();
+                System.out.println(id);
+                buildData();
+            }
+            else{
+                System.out.println("trying edit");
+            }
+            
+
         }
+
     }
-    
+
+
+
+/**
+ * Opens a dialog to edit details for the specified record. If the user clicks
+ * OK, the changes are saved into the provided person object and true is
+ * returned.
+ *
+ * @param item is instance of the record object to be edited
+ * @return true if the user clicked OK, false otherwise.
+ */
+public boolean showRecordEditDialog(Record Record) {
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EditRecordDialog.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root1));
+            stage.setResizable(false);
+            
+             // Set the Record into the controller
+            EditRecordDialogController controller = fxmlLoader.getController();
+            controller.setDialogStage(stage);
+            controller.setRecordDetails(Record);
+       
+            // Show the dialog and wait until the user closes it
+           
+            stage.showAndWait();
+            
+            return controller.isOkClicked();
+            
+
+        
+
+} catch (IOException ex) {
+            Logger.getLogger(ViewTransactionController.class
+.getName()).log(Level.SEVERE, null, ex);
+           return false;
+        }
+
+    }
+
+    /**
+     * Refreshes the table. This is only necessary if an item that is already in
+     * the table is changed. New and deleted items are refreshed automatically.
+     */
+//   private void updateRecord() {
+//       int selectedIndex=transact_Table.getSelectionModel().getSelectedIndex();
+//        transact_Table.layout();
+//        transact_Table.getSelectionModel().select(selectedIndex);
+//        
+//        transact_Table.setItems(data);
+//        transact_Table.getSelectionModel().select(selectedIndex);
+//    }
+
 
 }

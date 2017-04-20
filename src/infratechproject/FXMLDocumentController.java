@@ -93,6 +93,7 @@ public class FXMLDocumentController implements Initializable {
            String canopy=canopyTxt.getText();
            LocalDate dater=datePicker.getValue();
            String date=dater.toString();
+           String errMesage;
             if (name.equals("") || add.equals("") || phone.equals("") || chair.equals("") || table.equals("") || canopy.equals("")||date.equals("")) {
             //status.setText("Please fill all fields");
             System.out.println("all fields");

@@ -17,13 +17,14 @@ import java.sql.SQLException;
 public class DatabaseConnection {
     public Connection Connector() throws ClassNotFoundException, InstantiationException, IllegalAccessException{
         try{
-        Class.forName("com.mysql.jdbc.Driver").newInstance();
-        return DriverManager.getConnection("jdbc:mysql://localhost:3300/IcpFaith?" + "user=root&password=faith1");
+        Class.forName("com.mysql.jdbc.Driver");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3300/IcpFaith", "root","faith1");
+        //System.out.println("Connected");
         }catch(SQLException e){
        
         System.out.println(e.getCause()+" "+e.getMessage());
     
         } 
         return null;
-    }    
+    }
 }
