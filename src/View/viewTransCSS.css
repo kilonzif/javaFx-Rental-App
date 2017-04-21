@@ -15,27 +15,7 @@ and open the template in the editor.
     /**-fx-opacity: 0.5;*/
      -fx-border-color: transparent;
 }
-#editButton{
-        -fx-font: bold italic 16pt "Arial";
-        -fx-background-color: #5e5e6b;
-        -fx-border-radius: 4;
-        -fx-box-color: steelblue;
-        -fx-padding: 3 6 6 6;
-}
-#backButton{
-        -fx-background-color: #5e5e6b;
-        -fx-font: bold italic 16pt "Arial";
-        -fx-border-radius: 4;
-        -fx-box-shadow: red;
-        -fx-padding: 3 6 6 6;
-}
-#deleteButton{
-        -fx-background-color: #5e5e6b;
-        -fx-font: bold italic 16pt "Arial";
-        -fx-border-radius: 4;
-        -fx-box-shadow: steelblue;
-        -fx-padding: 3 6 6 6;
-}
+
 #helpPage{
      /**-fx-background-image: url("rentals.jpg");*/
     -fx-background-size: 98% 95%;

@@ -19,7 +19,7 @@ public class Operations {
     PreparedStatement statement = null;
 /**
  * 
- * @param index is the id of the selected item to delete.
+ * @param id is the id of the selected item to delete.
  * @return true if Record deletion is successful.
  * @throws SQLException
  * @throws ClassNotFoundException
@@ -27,11 +27,11 @@ public class Operations {
  * @throws IllegalAccessException 
  */
     
-    public boolean deleteRecord(int index) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+    public boolean deleteRecord(int id) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         String query = "DELETE FROM customerDetails WHERE id=?";
         conn = createConnection();
         statement = conn.prepareStatement(query);
-        statement.setInt(1, index);
+        statement.setInt(1, id);
         return statement.execute();
     }
 

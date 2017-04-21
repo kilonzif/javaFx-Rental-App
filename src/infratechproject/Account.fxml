@@ -36,10 +36,10 @@
             <Font name="Brush Script MT Italic" size="18.0" />
          </font>
       </Text>
-      <TextField fx:id="userNameTxt" layoutX="259.0" layoutY="124.0" prefHeight="39.0" prefWidth="203.0" />
-      <PasswordField fx:id="passwordTxt" layoutX="259.0" layoutY="184.0" prefHeight="39.0" prefWidth="203.0" />
-      <PasswordField fx:id="confirmPassword" layoutX="262.0" layoutY="246.0" prefHeight="39.0" prefWidth="196.0" />
-      <Button fx:id="accountBtn" layoutX="306.0" layoutY="316.0" mnemonicParsing="false" onAction="#createBtn" prefHeight="39.0" prefWidth="94.0" text="CreateAccount">
+      <TextField fx:id="userNameTxt" layoutX="259.0" layoutY="124.0" prefHeight="39.0" prefWidth="219.0" />
+      <PasswordField fx:id="passwordTxt" layoutX="259.0" layoutY="184.0" prefHeight="39.0" prefWidth="219.0" />
+      <PasswordField fx:id="confirmPassword" layoutX="262.0" layoutY="246.0" prefHeight="39.0" prefWidth="219.0" />
+      <Button fx:id="accountBtn" layoutX="259.0" layoutY="316.0" mnemonicParsing="false" onAction="#createBtn" prefHeight="39.0" prefWidth="94.0" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 4; -fx-padding: 3 6 6 6;" text="CreateAccount">
          <font>
             <Font name="Californian FB" size="12.0" />
          </font>
@@ -49,5 +49,10 @@
             <Font name="Californian FB Italic" size="18.0" />
          </font>
       </Text>
+      <Button fx:id="backButton" layoutX="389.0" layoutY="316.0" mnemonicParsing="false" onAction="#cancelOperation" prefHeight="39.0" prefWidth="94.0" style="-fx-background-color: black; -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 4; -fx-padding: 3 6 6 6;" text="Cancel">
+         <font>
+            <Font name="Californian FB" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

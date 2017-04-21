@@ -11,9 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="transactRoot" opacity="0.72" prefHeight="467.0" prefWidth="613.0" style="-fx-background-color: white;" styleClass="infratechproject" stylesheets="@viewTransCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infratechproject.ViewTransactionController">
+<AnchorPane id="AnchorPane" fx:id="transactRoot" opacity="0.72" prefHeight="467.0" prefWidth="613.0" style="-fx-background-color: white;" styleClass="infratechproject" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infratechproject.ViewTransactionController">
    <children>
-      <TableView fx:id="transact_Table" editable="true" layoutX="34.0" layoutY="103.0" prefHeight="290.0" prefWidth="546.0" style="-fx-border-color: blue; -fx-background-color: transparent;" styleClass="ViewTransactionController">
+      <TableView fx:id="transact_Table" editable="true" layoutX="34.0" layoutY="103.0" prefHeight="290.0" prefWidth="546.0" style="-fx-border-color: blue; -fx-background-color: transparent;">
         <columns>
           <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Customer" />
           <TableColumn fx:id="addressColumn" prefWidth="75.0" text="Address" />
@@ -24,9 +24,9 @@
             <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Date" />
         </columns>
       </TableView>
-      <Button id="deleteButton" fx:id="deleteButton" layoutX="356.0" layoutY="413.0" mnemonicParsing="false" onAction="#deleteRecord" prefHeight="37.0" prefWidth="94.0" style="-fx-border-color: blue; -fx-border-color: #5e5e6d;" stylesheets="@viewTransCSS.css" text="Delete" />
-      <Button id="editButton" fx:id="editButton" layoutX="229.0" layoutY="412.0" mnemonicParsing="false" onAction="#editButton" prefHeight="37.0" prefWidth="94.0" style="-fx-border-color: #5e5e6d;" stylesheets="@viewTransCSS.css" text="Edit" />
-      <Button id="backButton" fx:id="backButton" layoutX="477.0" layoutY="411.0" mnemonicParsing="false" onAction="#goBack" prefHeight="37.0" prefWidth="105.0" style="--fx-background-color: #5e5e6d;" stylesheets="@viewTransCSS.css" text="Cancel" />
+      <Button id="deleteButton" fx:id="deleteButton" layoutX="356.0" layoutY="415.0" mnemonicParsing="false" onAction="#deleteRecord" prefHeight="37.0" prefWidth="94.0" style="-fx-background-color: black; -fx-border-color: white; -fx-text-fill: white; -fx-border-radius: 4; -fx-padding: 3 5 5 5; -fx-font-size: 15;" text="Delete" />
+      <Button id="editButton" fx:id="editButton" layoutX="229.0" layoutY="416.0" mnemonicParsing="false" onAction="#editButton" prefHeight="37.0" prefWidth="101.0" style="-fx-border-color: white; -fx-background-color: black; -fx-text-fill: white; -fx-padding: 3 5 5 5; -fx-font-size: 15; -fx-border-radius: 4;" text="Edit" />
+      <Button id="backButton" fx:id="backButton" layoutX="477.0" layoutY="412.0" mnemonicParsing="false" onAction="#goBack" prefHeight="37.0" prefWidth="101.0" style="-fx-border-color: white; -fx-background-color: black; -fx-text-fill: white; -fx-padding: 3 5 5 5; -fx-border-radius: 4; -fx-font-size: 15;" text="Cancel" />
       <ImageView fitHeight="37.0" fitWidth="104.0" layoutX="239.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 10px;">
          <image>
             <Image url="@myLogo.png" />

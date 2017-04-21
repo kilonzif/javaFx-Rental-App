@@ -8,15 +8,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="helpPage" fx:id="helpPage" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #E6E6FA;" stylesheets="@viewTransCSS.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="infratechproject.AboutInfratechController">
+<AnchorPane id="helpPage" fx:id="helpPage" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" stylesheets="@viewTransCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infratechproject.AboutInfratechController">
    <children>
-      <ImageView fitHeight="100.0" fitWidth="138.0" layoutX="196.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="230.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@myLogo.png" />
          </image>
       </ImageView>
-      <TextArea id="aboutTxtField" fx:id="aboutTxtField" editable="false" layoutX="99.0" layoutY="99.0" prefHeight="282.0" prefWidth="367.0" style="-: ; -fx-font-weight: 100;" stylesheets="@viewTransCSS.css" text="&#10;&#10;&#10;&#10;&#10;&#10;*&#9;Add a new transaction record&#10;*&#9;View all recent records&#10;*&#9;View details of a particular record&#10;*&#9;Edit a record.&#10;*&#9;Search for a record at least by clientName or phone#.&#10;&#10;&#10;">
+      <TextArea id="aboutTxtField" fx:id="aboutTxtField" editable="false" layoutX="99.0" layoutY="99.0" prefHeight="282.0" prefWidth="367.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-font-weight: 100; -fx-font-style: italic;" stylesheets="@viewTransCSS.css" text="&#10;&#10;&#10;&#10;&#10;&#10;*&#9;Add a new transaction record&#10;*&#9;View all recent records&#10;*&#9;View details of a particular record&#10;*&#9;Edit a record.&#10;*&#9;Search for a record at least by clientName or phone#.&#10;&#10;&#10;">
          <font>
             <Font name="Californian FB" size="14.0" />
          </font>
@@ -32,11 +31,11 @@
          </image>
       </ImageView>
       <Text layoutX="300.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-      <Text layoutX="191.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="InfraTech Rentals">
+      <Text layoutX="216.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="InfraTech Rentals">
          <font>
             <Font name="Californian FB" size="14.0" />
          </font>
       </Text>
-      <Button fx:id="backButton" layoutX="493.0" layoutY="356.0" mnemonicParsing="false" onAction="#goBack" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #5e5e6d; -fx-border-color: white;" stylesheets="@viewTransCSS.css" text="Back" />
+      <Button fx:id="backButton" layoutX="493.0" layoutY="356.0" mnemonicParsing="false" onAction="#goBack" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: black; -fx-border-color: white; -fx-text-fill: white; -fx-border-radius: 4; -fx-padding: 3 4 4 4;" stylesheets="@viewTransCSS.css" text="Back" />
    </children>
 </AnchorPane>

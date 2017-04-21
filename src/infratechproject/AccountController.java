@@ -42,6 +42,8 @@ public class AccountController implements Initializable {
     private Button accountBtn;
 
     EditRecordDialogController viewObject;
+    @FXML
+    private Button backButton;
 
     /**
      * Initializes the controller class.
@@ -91,6 +93,10 @@ public class AccountController implements Initializable {
             }
 
         }
+    }
+
+    @FXML
+    private void cancelOperation(ActionEvent event) {
     }
 
 }

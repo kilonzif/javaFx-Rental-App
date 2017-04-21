@@ -12,16 +12,16 @@
 
 <AnchorPane id="AnchorPane" prefHeight="519.0" prefWidth="664.0" style="-fx-background-color: 'white';" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infratechproject.MainPageController">
    <children>
-      <Button fx:id="logInBtn" layoutX="270.0" layoutY="345.0" mnemonicParsing="false" onAction="#logIn" prefHeight="45.0" prefWidth="99.0" style="-fx-background-color: #5e5e6d; -fx-border-color: white; -fx-padding: 3 6 6 6; -fx-border-radius: 4;" text="LogIn">
+      <Button fx:id="logInBtn" layoutX="270.0" layoutY="345.0" mnemonicParsing="false" onAction="#logIn" prefHeight="45.0" prefWidth="99.0" style="-fx-background-color: black; -fx-border-color: white; -fx-padding: 3 6 6 6; -fx-border-radius: 4; -fx-text-fill: white;" text="LogIn">
          <font>
             <Font name="Californian FB" size="18.0" />
          </font></Button>
-      <ImageView fitHeight="96.0" fitWidth="92.0" layoutX="293.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="96.0" fitWidth="92.0" layoutX="281.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@myLogo.png" />
          </image>
       </ImageView>
-      <Text layoutX="266.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="InfraTech Rentals">
+      <Text layoutX="266.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="InfraTech Rentals">
          <font>
             <Font name="Californian FB Italic" size="20.0" />
          </font>
@@ -42,7 +42,7 @@
             <Font name="Californian FB Italic" size="24.0" />
          </font>
       </Text>
-      <Hyperlink fx:id="signUpLink" layoutX="404.0" layoutY="351.0" onAction="#createAccount" text="Sign Up" underline="true" />
+      <Hyperlink fx:id="signUpLink" layoutX="404.0" layoutY="356.0" onAction="#createAccount" text="Sign Up" underline="true" />
       <TextField fx:id="userTxt" layoutX="232.0" layoutY="199.0" prefHeight="45.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

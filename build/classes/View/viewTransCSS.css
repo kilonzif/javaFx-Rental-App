@@ -1,0 +1,32 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 13, 2017, 9:23:47 PM
+    Author     : study
+*/
+.infratechproject{
+   /** -fx-background-image: url("images.jpg");*/
+    -fx-background-size: 100% 95%;
+    -fx-background-position: center;
+    -fx-background-color: grey;
+    /**-fx-opacity: 0.5;*/
+     -fx-border-color: transparent;
+}
+
+#helpPage{
+     /**-fx-background-image: url("rentals.jpg");*/
+    -fx-background-size: 98% 95%;
+    -fx-background-position: center;
+    -fx-background-color: grey;
+    /**-fx-opacity: 0.1;*/
+     -fx-border-color: transparent;
+}
+#aboutTxtField{
+    -fx-text-fill: black;
+    -fx-background-color: #5e5e6d;
+    -fx-box-shadow-color:#5e5e6d;
+    
+}

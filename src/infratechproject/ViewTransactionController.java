@@ -98,51 +98,50 @@ public class ViewTransactionController implements Initializable {
      */
     public void buildData() throws ClassNotFoundException {
 
-            nameColumn.setCellValueFactory(
-                    new PropertyValueFactory<>("name"));
-            addressColumn.setCellValueFactory(
-                    new PropertyValueFactory<>("address"));
-            phoneColumn.setCellValueFactory(
-                    new PropertyValueFactory<>("phone"));
-            chairColumn.setCellValueFactory(
-                    new PropertyValueFactory<>("chairs"));
-            canopyColumn.setCellValueFactory(
-                    new PropertyValueFactory<>("canopies"));
-            tableColumn.setCellValueFactory(
-                    new PropertyValueFactory<>("tables"));
-            dateColumn.setCellValueFactory(
-                    new PropertyValueFactory<>("dateEntry"));
-            DatabaseConnection objDbClass = new DatabaseConnection();
-            try {
-                con = objDbClass.Connector();
-            } catch (InstantiationException ex) {
-                Logger.getLogger(ViewTransactionController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
-                Logger.getLogger(ViewTransactionController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            data = FXCollections.observableArrayList();
-            try {
-                String SQL = "Select * from customerDetails Order By id";
-                ResultSet rs = con.createStatement().executeQuery(SQL);
-                while (rs.next()) {
-                    Record record = new Record();
-                    record.name.set(rs.getString("customerName"));
-                    record.address.set(rs.getString("address"));
-                    record.phone.set(rs.getString("phone"));
-                    record.chairs.set(rs.getString("chairs"));
-                    record.tables.set(rs.getString("tableQty"));
-                    record.canopies.set(rs.getString("canopy"));
-                    record.dateEntry.set(rs.getString("rentDate"));
-                    data.add(record);
-                }
-                transact_Table.setItems(data);
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("Error on Building Data");
-            }
-        
+        nameColumn.setCellValueFactory(
+                new PropertyValueFactory<>("name"));
+        addressColumn.setCellValueFactory(
+                new PropertyValueFactory<>("address"));
+        phoneColumn.setCellValueFactory(
+                new PropertyValueFactory<>("phone"));
+        chairColumn.setCellValueFactory(
+                new PropertyValueFactory<>("chairs"));
+        canopyColumn.setCellValueFactory(
+                new PropertyValueFactory<>("canopies"));
+        tableColumn.setCellValueFactory(
+                new PropertyValueFactory<>("tables"));
+        dateColumn.setCellValueFactory(
+                new PropertyValueFactory<>("dateEntry"));
+        DatabaseConnection objDbClass = new DatabaseConnection();
+        try {
+            con = objDbClass.Connector();
+        } catch (InstantiationException ex) {
+            Logger.getLogger(ViewTransactionController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(ViewTransactionController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
+        data = FXCollections.observableArrayList();
+        try {
+            String SQL = "Select * from customerDetails Order By id";
+            ResultSet rs = con.createStatement().executeQuery(SQL);
+            while (rs.next()) {
+                Record record = new Record();
+                record.name.set(rs.getString("customerName"));
+                record.address.set(rs.getString("address"));
+                record.phone.set(rs.getString("phone"));
+                record.chairs.set(rs.getString("chairs"));
+                record.tables.set(rs.getString("tableQty"));
+                record.canopies.set(rs.getString("canopy"));
+                record.dateEntry.set(rs.getString("rentDate"));
+                data.add(record);
+            }
+            transact_Table.setItems(data);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error on Building Data");
+        }
+
+    }
 
     /**
      * navigates to the previous page of adding transactions
@@ -159,7 +158,7 @@ public class ViewTransactionController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
-            stage.setTitle("Infratech Rentals " );
+            stage.setTitle("Infratech Rentals ");
             //stage.getIcons().add(new Image("myLogo.png"));
             stage.setScene(new Scene(root1));
             stage.setResizable(false);
@@ -183,8 +182,9 @@ public class ViewTransactionController implements Initializable {
         if (selectedIndex >= 0) {
             if (confirmAlert()) {
                 Operations delOp = new Operations();
-                delOp.deleteRecord(selectedIndex);
-                transact_Table.getItems().remove(selectedIndex);
+                if (delOp.deleteRecord(selectedIndex)) {
+                    transact_Table.getItems().remove(selectedIndex);
+                }
             }
 
         }
@@ -286,13 +286,8 @@ public class ViewTransactionController implements Initializable {
         alert.setTitle("Confirmation Dialog");
         alert.setHeaderText("Look, a Confirmation Dialog");
         alert.setContentText("Are you ok with this?");
-
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK) {
-            return true;
-        } else {
-            return false;
-        }
+        return result.get() == ButtonType.OK;
 
     }
 
