@@ -68,8 +68,7 @@ public class AccountController implements Initializable {
         String user = userNameTxt.getText();
         String pass = passwordTxt.getText();
         String Cpass = confirmPassword.getText();
-        viewObject = new EditRecordDialogController();
-        if (viewObject.isInputValid()) {
+        if (isInputValid()) {
             try {
                 addModel objectAdd = new addModel();
                 objectAdd.addAccount(user, pass, Cpass);
@@ -96,7 +95,53 @@ public class AccountController implements Initializable {
     }
 
     @FXML
-    private void cancelOperation(ActionEvent event) {
+    private void cancelOperation(ActionEvent event) throws IOException {
+        
+        Stage prev = (Stage) accountBtn.getScene().getWindow();
+                prev.close();
+
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainPage.fxml"));
+                Parent root1 = (Parent) fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.setTitle("Infratech Rentals ");
+                stage.getIcons().add(new Image("file:myLogo.png"));
+                stage.setScene(new Scene(root1));
+                stage.setResizable(false);
+                stage.show();
+    }
+    
+    public boolean isInputValid() {
+        String errorMessage = "";
+        if (userNameTxt.getText().equals("")
+                || confirmPassword.getText().equals("") || passwordTxt.getText().equals("") ) {
+            errorMessage += "Please fill all fields!\n";
+
+        }else if (passwordTxt.getText().length() < 6) {
+            errorMessage += "password shld be 6 xters\n";
+        }else if(!passwordTxt.getText().equals(confirmPassword.getText()))
+            errorMessage += "passwords shld be the same \n";
+        if (errorMessage.length() == 0) {
+            return true;
+        } else {
+            String alertMsg = errorMessage + " ";
+            showAlert(alertMsg);
+
+            return false;
+        }
+
+    }
+
+    /**
+     * Alerts the user on the input mismatch
+     *
+     * @param alertMsg contains the message alert to be displayed
+     */
+    public void showAlert(String alertMsg) {
+        Alert alert;
+        alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText(alertMsg);
+        alert.show();
+
     }
 
 }

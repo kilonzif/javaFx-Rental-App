@@ -20,7 +20,7 @@
          </image>
       </ImageView>
       <Button id="backButton" fx:id="backButton" layoutX="430.0" layoutY="351.0" mnemonicParsing="false" onAction="#navigateBack" prefHeight="35.0" prefWidth="98.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 4; -fx-padding: 3 6 6 6; -fx-font-size: 15; -fx-text-fill: WHITE;" text="Back" />
-      <ComboBox fx:id="itemBox" layoutX="149.0" layoutY="83.0" onAction="#viewSelectedItem" prefWidth="150.0" />
+      <ComboBox fx:id="itemBox" layoutX="149.0" layoutY="83.0" onAction="#viewSelectedItem" prefWidth="150.0" style="-fx-border-color: black;" />
       <Label layoutX="128.0" layoutY="132.0" />
       <Text layoutX="52.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select To View">
          <font>
@@ -32,14 +32,14 @@
          </font>
       </Text>
       <Button layoutX="328.0" layoutY="82.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" style="-fx-border-color: white; -fx-background-color: black; -fx-text-fill: white; -fx-padding: 3 4 4 4; -fx-border-radius: 4;" text="View" />
-      <TableView fx:id="itemsTable" layoutX="100.0" layoutY="132.0" prefHeight="200.0" prefWidth="300.0">
+      <TableView fx:id="itemsTable" layoutX="100.0" layoutY="132.0" prefHeight="200.0" prefWidth="300.0" style="-fx-border-color: black;">
         <columns>
           <TableColumn fx:id="nameColumn" prefWidth="101.0" text="Client Name" />
           <TableColumn fx:id="quantity" prefWidth="96.0" text="Quantity" />
             <TableColumn fx:id="dateColumn" prefWidth="94.0" text="Date Rented" />
         </columns>
       </TableView>
-      <TextArea fx:id="totalsField" editable="false" layoutX="292.0" layoutY="350.0" prefHeight="35.0" prefWidth="108.0" promptText="0" />
+      <TextArea fx:id="totalsField" editable="false" layoutX="292.0" layoutY="350.0" prefHeight="35.0" prefWidth="108.0" promptText="0" style="-fx-border-color: black;" />
       <Text layoutX="221.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total">
          <font>
             <Font name="Californian FB Bold" size="18.0" />

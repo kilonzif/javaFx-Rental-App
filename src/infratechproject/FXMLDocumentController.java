@@ -104,7 +104,6 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void addTransaction(ActionEvent event) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException, IOException {
-        FileOutputStream f = null;
         try {
             String name = nameTxt.getText();
             String add = addressTxt.getText();
@@ -146,11 +145,7 @@ public class FXMLDocumentController implements Initializable {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            try {
-                f.close();
-            } catch (IOException ex) {
-                Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+          
         }
     }
 
