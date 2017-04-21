@@ -14,7 +14,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="rooter" opacity="0.66" prefHeight="617.0" prefWidth="574.0" style="-fx-background-color: white;" styleClass="infratechproject" stylesheets="@infratect.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infratechproject.FXMLDocumentController">
     <children>
-      <ImageView fitHeight="54.0" fitWidth="93.0" layoutX="230.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="54.0" fitWidth="93.0" layoutX="230.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@myLogo.png" />
          </image>
@@ -29,7 +29,7 @@
             <Font name="Angsana New Bold" size="24.0" />
          </font>
       </Text>
-      <Button fx:id="addBtn" layoutX="240.0" layoutY="556.0" mnemonicParsing="false" onAction="#addTransaction" prefHeight="33.0" prefWidth="75.0" style="-fx-background-color: #e8e8ef; -fx-font-family: verdana; -fx-border-color: white; -fx-padding: 3 6 6 6; -fx-border-radius: 4;" text="Transact" />
+      <Button fx:id="addBtn" layoutX="240.0" layoutY="556.0" mnemonicParsing="false" onAction="#addTransaction" prefHeight="33.0" prefWidth="75.0" style="-fx-background-color: #e8e8ef; -fx-font-family: verdana; -fx-border-color: white; -fx-padding: 3 6 6 6; -fx-border-radius: 4; -fx-text-fill: black;" text="Transact" />
       <Text layoutX="91.0" layoutY="456.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date " wrappingWidth="57.03076171875">
          <font>
             <Font name="Angsana New Bold" size="24.0" />
@@ -63,15 +63,10 @@
                   <MenuItem fx:id="logOut" mnemonicParsing="false" onAction="#logOutFile" text="LogOut" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Search">
-            <items>
-              <MenuItem fx:id="searchNav" mnemonicParsing="false" onAction="#navigateSearch" text="Search Customer" />
-            </items>
-          </Menu>
             <Menu mnemonicParsing="false" text="View">
                <items>
-                  <MenuItem fx:id="navigateTransaction" mnemonicParsing="false" onAction="#viewTransaction" text="Transactions" />
-                  <MenuItem fx:id="navigateStock" mnemonicParsing="false" onAction="#viewStock" text=" Items in Stock" />
+                  <MenuItem fx:id="navigateTransaction" mnemonicParsing="false" onAction="#viewTransaction" text="Recent Transactions" />
+                  <MenuItem fx:id="navigateStock" mnemonicParsing="false" onAction="#viewStock" text="Records" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">
@@ -94,5 +89,10 @@
       <TextField fx:id="canopyTxt" layoutX="185.0" layoutY="386.0" prefHeight="33.0" prefWidth="293.0" style="-fx-border-color: #e6e8ed #e6e8ed blue #e6e8ed; -fx-background-color: white;" />
       <TextField fx:id="tableTxt" layoutX="187.0" layoutY="332.0" prefHeight="33.0" prefWidth="293.0" style="-fx-border-color: #e6e8ed #e6e8ed blue #e6e8ed; -fx-background-color: #e6e8ed #e6e8ed blue #e6e8ed;" />
       <TextField fx:id="durationTxt" layoutX="386.0" layoutY="434.0" prefHeight="33.0" prefWidth="88.0" style="-fx-border-color: #e6e8ed #e6e8ed blue #e6e8ed; -fx-background-color: white;" />
+      <Text layoutX="189.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="InfraTech Rentals" wrappingWidth="152.291015625">
+         <font>
+            <Font name="Californian FB Bold" size="18.0" />
+         </font>
+      </Text>
     </children>
 </AnchorPane>

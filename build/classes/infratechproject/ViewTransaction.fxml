@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="transactRoot" opacity="0.72" prefHeight="467.0" prefWidth="613.0" style="-fx-background-color: white;" styleClass="infratechproject" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="infratechproject.ViewTransactionController">
+   <children>
+      <TableView fx:id="transact_Table" editable="true" layoutX="34.0" layoutY="103.0" prefHeight="290.0" prefWidth="546.0" style="-fx-border-color: blue; -fx-background-color: transparent;">
+        <columns>
+          <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Customer" />
+          <TableColumn fx:id="addressColumn" prefWidth="75.0" text="Address" />
+            <TableColumn fx:id="phoneColumn" prefWidth="75.0" text="Phone#" />
+            <TableColumn fx:id="chairColumn" prefWidth="75.0" text="Chairs" />
+            <TableColumn fx:id="canopyColumn" prefWidth="75.0" text="Canopies" />
+            <TableColumn fx:id="tableColumn" prefWidth="75.0" text="Tables" />
+            <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Date" />
+        </columns>
+      </TableView>
+      <Button id="deleteButton" fx:id="deleteButton" layoutX="356.0" layoutY="415.0" mnemonicParsing="false" onAction="#deleteRecord" prefHeight="37.0" prefWidth="94.0" style="-fx-background-color: black; -fx-border-color: white; -fx-text-fill: white; -fx-border-radius: 4; -fx-padding: 3 5 5 5; -fx-font-size: 15;" text="Delete" />
+      <Button id="editButton" fx:id="editButton" layoutX="229.0" layoutY="416.0" mnemonicParsing="false" onAction="#editButton" prefHeight="37.0" prefWidth="101.0" style="-fx-border-color: white; -fx-background-color: black; -fx-text-fill: white; -fx-padding: 3 5 5 5; -fx-font-size: 15; -fx-border-radius: 4;" text="Edit" />
+      <Button id="backButton" fx:id="backButton" layoutX="477.0" layoutY="412.0" mnemonicParsing="false" onAction="#goBack" prefHeight="37.0" prefWidth="101.0" style="-fx-border-color: white; -fx-background-color: black; -fx-text-fill: white; -fx-padding: 3 5 5 5; -fx-border-radius: 4; -fx-font-size: 15;" text="Cancel" />
+      <ImageView fitHeight="37.0" fitWidth="104.0" layoutX="239.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 10px;">
+         <image>
+            <Image url="@myLogo.png" />
+         </image>
+      </ImageView>
+      <ComboBox fx:id="selectBox" layoutX="325.0" layoutY="69.0" onAction="#searchItem" prefHeight="25.0" prefWidth="94.0" />
+      <Text layoutX="254.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search By">
+         <font>
+            <Font name="Californian FB Bold" size="14.0" />
+         </font>
+      </Text>
+      <TextField fx:id="searchField" layoutX="431.0" layoutY="69.0" prefHeight="25.0" prefWidth="148.0" promptText="Search" />
+      <Text layoutX="211.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="InfraTech Rentals">
+         <font>
+            <Font name="Californian FB Bold" size="14.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
