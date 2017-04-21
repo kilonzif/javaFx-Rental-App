@@ -9,8 +9,9 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
- *
- * @author study
+ *Record
+ * The rentals Record Object class.
+ * @author Faith Kilonzi.
  */
 public class Record {
 

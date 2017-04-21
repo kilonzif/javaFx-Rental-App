@@ -8,9 +8,6 @@ package infratechproject;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;//Connection;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,8 +26,8 @@ import javafx.stage.Stage;
 
 /**
  * FXML Controller class
- *
- * @author study
+ *Facilitates Login into the program.
+ * @author Faith Kilonzi
  */
 @SuppressWarnings("unchecked")
 public class MainPageController implements Initializable {
@@ -46,6 +43,8 @@ public class MainPageController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -92,7 +91,6 @@ public class MainPageController implements Initializable {
             stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -133,7 +131,6 @@ public class MainPageController implements Initializable {
                         stage.setResizable(false);
                         stage.show();
                     } catch (IOException e) {
-                        e.printStackTrace();
                     }
 
                 } else {

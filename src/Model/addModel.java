@@ -10,8 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
- *
- * @author study
+ * Handles Addition and insertion into the database.
+ * @author Faith
  */
 @SuppressWarnings("unchecked")
 public class addModel {

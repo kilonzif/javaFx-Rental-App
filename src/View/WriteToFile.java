@@ -7,8 +7,8 @@
 package View;
 
 /**
- *
- * @author study
+ *Writes the customer receipt and generates the report.
+ * @author Faith Kilonzi.
  */
 public class WriteToFile {
     public void writeToFile(){

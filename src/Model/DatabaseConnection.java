@@ -11,7 +11,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- *
+ *Connects the controller views to database.
+ * Creates a connection.
  * @author Faith Kilonzi.
  */
 @SuppressWarnings("unchecked")

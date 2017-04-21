@@ -22,8 +22,8 @@ import javafx.stage.Stage;
 
 /**
  * FXML Controller class
- *
- * @author study
+ *Facilitates edition.
+ * @author Faith Kilonzi
  */
 public class EditRecordDialogController implements Initializable {
 

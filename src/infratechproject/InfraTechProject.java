@@ -13,8 +13,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *
- * @author study
+ *@InfraTechProject
+ * The main program with the main method to run the program.
+ * @author Faith Kilonzi.
  */
 @SuppressWarnings("unchecked")
 public class InfraTechProject extends Application {

@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 
 /**
  * FXML Controller class
- *
+ * Performs the addition operation into the system program.
  * @author Faith Kilonzi
  */
 @SuppressWarnings("unchecked")

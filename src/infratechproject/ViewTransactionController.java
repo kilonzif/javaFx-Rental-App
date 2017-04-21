@@ -34,8 +34,8 @@ import javafx.stage.Stage;
 
 /**
  * FXML Controller class
- *
- * @author study
+ *Viewing, editing, deletion.
+ * @author Faith Kilonzi.
  */
 @SuppressWarnings("unchecked")
 public class ViewTransactionController implements Initializable {
@@ -182,9 +182,9 @@ public class ViewTransactionController implements Initializable {
         if (selectedIndex >= 0) {
             if (confirmAlert()) {
                 Operations delOp = new Operations();
-                if (delOp.deleteRecord(selectedIndex)) {
+                delOp.deleteRecord(selectedIndex); 
                     transact_Table.getItems().remove(selectedIndex);
-                }
+                
             }
 
         }

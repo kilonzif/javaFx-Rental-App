@@ -31,8 +31,8 @@ import javafx.stage.Stage;
 
 /**
  * FXML Controller class
- *
- * @author study
+ *Facilitates stock viewing and totals.
+ * @author Faith Kilonzi.
  */
 @SuppressWarnings("unchecked")
 public class ViewStockController implements Initializable {

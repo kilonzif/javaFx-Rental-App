@@ -8,8 +8,8 @@ package Model;
 import java.sql.*;
 
 /**
- *
- * @author study
+ *Handles operations of the database-updating, deleting, inserting.
+ * @author Faith Kilonzi
  */
 @SuppressWarnings("unchecked")
 public class Operations {

@@ -26,7 +26,7 @@ import java.util.logging.Logger;
 
 /**
  * FXML Controller class
- *
+ *Facilitates account user sign up.
  * @author Faith Mueni Kilonzi.
  */
 @SuppressWarnings("unchecked")

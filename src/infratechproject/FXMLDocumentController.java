@@ -38,7 +38,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author study
+ * @author Facilitates the addition and navigation in the program.
  */
 @SuppressWarnings("unchecked")
 public class FXMLDocumentController implements Initializable {
