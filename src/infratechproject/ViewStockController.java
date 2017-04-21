@@ -125,12 +125,12 @@ public class ViewStockController implements Initializable {
             Connection con = objDbClass.Connector();
             ResultSet rs = con.createStatement().executeQuery(SQL);
             rs.next();
-            String sum = "Total Tables Bought are:  " + rs.getString(1) + "\n";
+            String sum = " " + rs.getString(1) + " ";
             System.out.println(sum);
 
             String sql = "SELECT customerName,tableQty,rentDate AS details FROM customerDetails";
 
-            ResultSet resultTwo = con.createStatement().executeQuery(sql);
+         /*   ResultSet resultTwo = con.createStatement().executeQuery(sql);
             while (resultTwo.next()) {
                 Record record = new Record();
                 record.name.set(rs.getString("customerName"));
@@ -138,8 +138,9 @@ public class ViewStockController implements Initializable {
                 record.phone.set(rs.getString("rentDate"));
                 data.add(record);
             }
+            */
             totalsField.setText(sum);
-            itemsTable.setItems(data);
+           // itemsTable.setItems(data);
 
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
             Logger.getLogger(ViewStockController.class.getName()).log(Level.SEVERE, null, ex);
@@ -167,9 +168,9 @@ public class ViewStockController implements Initializable {
             Connection con = objDbClass.Connector();
             ResultSet rs = con.createStatement().executeQuery(SQL);
             rs.next();
-            String sum = "Total Chairs Bought are:  " + rs.getString(1) + "\n";
+            String sum = " " + rs.getString(1) + " ";
 
-            String sql = "SELECT customerName,chairs,rentDate AS details FROM customerDetails";
+       /*     String sql = "SELECT customerName,chairs,rentDate AS details FROM customerDetails";
             ResultSet resultTwo = con.createStatement().executeQuery(sql);
             while (resultTwo.next()) {
                 Record record = new Record();
@@ -177,9 +178,9 @@ public class ViewStockController implements Initializable {
                 record.address.set(rs.getString("chairs"));
                 record.phone.set(rs.getString("rentDate"));
                 data.add(record);
-            }
+            }*/
             totalsField.setText(sum);
-            itemsTable.setItems(data);
+            //itemsTable.setItems(data);
 
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
             Logger.getLogger(ViewStockController.class.getName()).log(Level.SEVERE, null, ex);
@@ -208,7 +209,7 @@ public class ViewStockController implements Initializable {
             ResultSet rs = con.createStatement().executeQuery(SQL);
             rs.next();
             String sum = " " + rs.getString(1) + " ";
-
+/*
             String sql = "SELECT customerName,canopy,rentDate AS details FROM customerDetails";
             ResultSet resultTwo = con.createStatement().executeQuery(sql);
             while (resultTwo.next()) {
@@ -218,9 +219,9 @@ public class ViewStockController implements Initializable {
                 record.phone.set(rs.getString("rentDate"));
                 data.add(record);
             }
-
+*/
             totalsField.setText(sum);
-            itemsTable.setItems(data);
+           // itemsTable.setItems(data);
 
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
             Logger.getLogger(ViewStockController.class.getName()).log(Level.SEVERE, null, ex);

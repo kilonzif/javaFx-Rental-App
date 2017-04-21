@@ -6,12 +6,22 @@
 package infratechproject;
 
 import Model.addModel;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -96,31 +106,56 @@ public class FXMLDocumentController implements Initializable {
      * @throws IllegalAccessException
      */
     @FXML
-    private void addTransaction(ActionEvent event) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
-        editC = new EditRecordDialogController();
-        String name = nameTxt.getText();
-        String add = addressTxt.getText();
-        String phone = phoneTxt.getText();
-        String chair = chairTxt.getText();
-        String table = tableTxt.getText();
-        String canopy = canopyTxt.getText();
-        LocalDate dater = datePicker.getValue();
-        String date = dater.toString();
-        if (editC.isInputValid()) {
-            double cost = calculateCost();
-            addModel mod = new addModel();
-            mod.addCustomer(name, add, phone, chair, table, canopy, date);
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Payment Totals");
-            alert.setHeaderText("Payment Totals");
-            alert.setContentText(cost + "USD");
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK) {
-                Alert a = new Alert(Alert.AlertType.INFORMATION);
-                a.setContentText("Added SUCCESSFULLY!!!");
+    private void addTransaction(ActionEvent event) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException, IOException {
+        FileOutputStream f = null;
+        try {
+            HashMap<Object, Double> fileObj = new HashMap<Object, Double>();
+            editC = new EditRecordDialogController();
+            String name = nameTxt.getText();
+            String add = addressTxt.getText();
+            String phone = phoneTxt.getText();
+            String chair = chairTxt.getText();
+            String table = tableTxt.getText();
+            String canopy = canopyTxt.getText();
+            LocalDate dater = datePicker.getValue();
+            String date = dater.toString();
+            if (isInputValid()) {
+                double cost = calculateCost();
+                addModel mod = new addModel();
+                mod.addCustomer(name, add, phone, chair, table, canopy, date);
+                String text = nameTxt.getText() + " " + phoneTxt.getText() + " " + addressTxt.getText() + " " + canopyTxt.getText() + " " + chairTxt.getText() + " " + tableTxt.getText() + " " + datePicker.getValue() + " " + cost + "\n";
+                BufferedWriter output = null;
+                try {
+                    File file;
+                    file = new File("Customer.txt");
+                    output = new BufferedWriter(new FileWriter(file));
+                    output.write(text);
+                } catch (IOException e) {
+                } finally {
+                    if (output != null) {
+                        output.close();
+                    }
+                }
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Payment Totals");
+                alert.setHeaderText("Payment Totals");
+                alert.setContentText(cost + "USD");
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK) {
+                    Alert a = new Alert(Alert.AlertType.INFORMATION);
+                    a.setContentText("Added SUCCESSFULLY!!!");
+                    reset();
+                }
 
             }
-
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                f.close();
+            } catch (IOException ex) {
+                Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
@@ -270,5 +305,62 @@ public class FXMLDocumentController implements Initializable {
             return false;
         }
     }
+
+    /**
+     * Validates the user input in the text fields.
+     *
+     * @return true if the input is valid
+     */
+    public boolean isInputValid() {
+        String errorMessage = "";
+        if (phoneTxt.getText().equals("")
+                || nameTxt.getText().equals("") || addressTxt.getText().equals("") || chairTxt.getText().equals("") || tableTxt.getText().equals("") || canopyTxt.getText().equals("") || datePicker.getValue().equals("")) {
+            errorMessage += "Please fill all fields!\n";
+
+        } else if (!(addressTxt.getText().contains(".") || addressTxt.getText().contains("@"))) {
+            errorMessage += "Incorrect email\n";
+        } else if (phoneTxt.getText().length() < 10 || phoneTxt.getText().length() > 10) {
+            errorMessage += "phone number shld be 10 xters\n";
+        }
+        if (errorMessage.length() == 0) {
+            return true;
+        } else {
+            String alertMsg = errorMessage + " ";
+            showAlert(alertMsg);
+
+            return false;
+        }
+
+    }
+
+    /**
+     * Alerts the user on the input mismatch
+     *
+     * @param alertMsg contains the message alert to be displayed
+     */
+    public void showAlert(String alertMsg) {
+        Alert alert;
+        alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText(alertMsg);
+        alert.show();
+
+    }
+
+    /**
+     * resets the text-fields after an entry is made.
+     */
+    public void reset() {
+        nameTxt.setText("");
+        phoneTxt.setText(" ");
+        addressTxt.setText("");
+        canopyTxt.setText("");
+        chairTxt.setText("");
+        tableTxt.setText("");
+        durationTxt.setText("");
+        datePicker.setValue(null);
+
+    }
+
+  
 
 }
