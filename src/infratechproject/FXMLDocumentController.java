@@ -12,12 +12,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -109,8 +106,6 @@ public class FXMLDocumentController implements Initializable {
     private void addTransaction(ActionEvent event) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException, IOException {
         FileOutputStream f = null;
         try {
-            HashMap<Object, Double> fileObj = new HashMap<Object, Double>();
-            editC = new EditRecordDialogController();
             String name = nameTxt.getText();
             String add = addressTxt.getText();
             String phone = phoneTxt.getText();
@@ -127,7 +122,7 @@ public class FXMLDocumentController implements Initializable {
                 BufferedWriter output = null;
                 try {
                     File file;
-                    file = new File("Customer.txt");
+                    file = new File(name + ".txt");
                     output = new BufferedWriter(new FileWriter(file));
                     output.write(text);
                 } catch (IOException e) {
@@ -360,7 +355,5 @@ public class FXMLDocumentController implements Initializable {
         datePicker.setValue(null);
 
     }
-
-  
 
 }
